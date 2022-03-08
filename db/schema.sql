@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS artjacent_db;
+CREATE DATABASE artjacent_db;
