@@ -1,12 +1,11 @@
 # artJacent
 
-# artJacent
-
 ## Authors:
 
-Manager: Jordan Rothwell
-Frontend Developer: Rachel Harris & Lily Vu
-Backend Developer: Evan Woods
+* Manager: Jordan Rothwell
+* Frontend Developer: Rachel Harris & Lily Vu
+* Backend Developer: Evan Woods
+
 
 ## Links for project:
 
@@ -52,7 +51,7 @@ Art is a forever growing passionate interest, that plays an important role in th
 - Protect API keys and sensitive information with environment variables.
 
 
-## Images of artJACENT
+## Images for artJACENT
 
 
 
