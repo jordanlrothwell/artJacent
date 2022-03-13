@@ -1,4 +1,4 @@
-const withAuth = require('./auth');
+const withAuth = require("./auth");
+const geoparse = require("./geoparse");
 
-
-module.exports = { withAuth };
+module.exports = { withAuth, geoparse };

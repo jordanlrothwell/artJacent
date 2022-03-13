@@ -10,11 +10,12 @@ const geoparse = async function (query) {
 
   const locationJSON = await fetch(URL);
   const locationObj = await locationJSON.json();
-  
+
   const coordinates = locationObj.results[0].position;
   const address = locationObj.results[0].address.freeformAddress;
 
-  console.log(coordinates, address)
-}
+  const geoparseObj = { coordinates: coordinates, address: address };
+  return geoparseObj;
+};
 
-geoparse("newcastle");
+module.exports = geoparse;
