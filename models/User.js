@@ -1,5 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const bcrypt = require("bcrypt");
+const { geoparse } = require("../utils");
 
 class User extends Model {
   async checkPassword(loginPw) {
@@ -31,15 +33,21 @@ User.init(
         isEmail: true,
       },
     },
-    location: {
+    address: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    latitude: {
+      type: DataTypes.DOUBLE,
+    },
+    longitude: {
+      type: DataTypes.DOUBLE,
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [6],
+        len: [8],
       },
     },
   },
@@ -47,6 +55,10 @@ User.init(
     hooks: {
       beforeCreate: async (user) => {
         user.password = await bcrypt.hash(user.password, 12);
+        const geoparseObj = await geoparse(user.address);
+        user.address = await geoparseObj.address;
+        user.latitude = await geoparseObj.coordinates.lat;
+        user.longitude = await geoparseObj.coordinates.lon;
       },
       beforeUpdate: async (user) => {
         user.password = await bcrypt.hash(user.password, 12);

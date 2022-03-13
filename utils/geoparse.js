@@ -18,4 +18,5 @@ const geoparse = async function (query) {
   return geoparseObj;
 };
 
+
 module.exports = geoparse;
