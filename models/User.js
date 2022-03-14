@@ -47,7 +47,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8],
+        len: [6],
       },
     },
   },
@@ -56,9 +56,9 @@ User.init(
       beforeCreate: async (user) => {
         user.password = await bcrypt.hash(user.password, 12);
         const geoparseObj = await geoparse(user.address);
-        user.address = await geoparseObj.address;
-        user.latitude = await geoparseObj.coordinates.lat;
-        user.longitude = await geoparseObj.coordinates.lon;
+        user.address = geoparseObj.address;
+        user.latitude = geoparseObj.coordinates.lat;
+        user.longitude = geoparseObj.coordinates.lon;
       },
       beforeUpdate: async (user) => {
         user.password = await bcrypt.hash(user.password, 12);
