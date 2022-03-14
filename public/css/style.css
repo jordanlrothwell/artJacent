@@ -36,6 +36,7 @@ h1 {
   position: relative;
   top: 25px;
 }
+
 span {
   color: #009aee;
 }
@@ -82,3 +83,48 @@ h3 {
   position: relative;
 }
 
+h1 {
+  font-size: 100px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 25px;
+}
+span {
+  color: #009aee;
+}
+
+h2 {
+  font-size: 30px;
+  color: white;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  font-size: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary {
+  background-color: #00adf2;
+  color: white;
+  border-style: solid;
+  border-color: white;
+  border-radius: 5px 5px 5px 5px;
+  align-items: center;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}

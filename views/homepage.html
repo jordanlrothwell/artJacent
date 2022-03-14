@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <link rel="stylesheet" href="./public/style.css">
+  <title>artJACENT</title>
+</head>
+
+<body>
+    <div id="header" class="flex-column justify-space-around">
+    <header class="display-flex justify-space-between align-center p-2">
+      <h1><span class="art">art</span>Jacent <img src="./public/icons8-paint-50.png"/></h1>
+    
+    </header>
+      
+       <main id="body" class="container"></main>
+      <h2>Welcome to artJacent</h2>
+      <h3>Please Login or Signup </h3>
+      <br>
+          <div class="container">
+          <a style="color: white; text-decoration: none;" href="/login">Login</a>
+           <button class="no-button" id="login"></button>
+           </div>
+           <br>
+
+          
+             <form id="loginForm" style="color:white"> 
+            <label for="email-login">email:</label>
+            <input class="form-input" type="text" id="email-login" />
+             <label for="password-login">password:</label>
+             <input class="form-input" type="password" id="password-login" />
+            <button class="btn-primary" type="submit">login</button>
+            </form>
+              <br>
+              <br>
+
+              <div class="container">
+               <a style="color: white; text-decoration: none;" href="/profile">Signup</a> 
+              <button class="no-button" color="#065b83" id="signup"></button>
+              </div>
+              <br>
+
+          
+             
+              <form id="signupForm" style="color:white">
+             <label for="name-signup">name:</label>
+               <input class="form-input" type="text" id="name-signup"/>
+               <label for="email-signup">email:</label>
+                <input class="form-input" type="text" id="email-signup"/>
+                  <label for="password-signup">password:</label>
+                  <input class="form-input" type="password" id="password-signup" />
+                  <label for="password-signup">confirm password:</label>
+                  <input class="form-input" type="password" id="password-confirm" />
+                  <button class="btn-primary" type="submit">signup</button>
+                </form>
+         
+<script src="/js/login.js"></script>
+<script src="./js/profile.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+ 
+</body>
+</html>

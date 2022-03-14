@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Artwork } = require("../../models");
 
 // CREATE new user
 router.post("/", async (req, res) => {
@@ -46,13 +46,19 @@ router.post("/login", async (req, res) => {
 
     req.session.loggedIn = true;
 
-    res
-      .status(200)
-      .json({ user: dbUserData, message: "You are now logged in!" });
+    res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.post("/upload", async (req, res) => {
+  const artworkData = await Artwork.create({
+    name: req.body.name,
+    image: req.body.image,
+    user_id: req.session.user_id,
+  });
 });
 
 // Logout
