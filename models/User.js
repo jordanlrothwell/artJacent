@@ -3,6 +3,8 @@ const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
 const { geoparse } = require("../utils");
 
+const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 class User extends Model {
   async checkPassword(loginPw) {
     return await bcrypt.compare(loginPw, this.password);
@@ -54,6 +56,7 @@ User.init(
   {
     hooks: {
       beforeCreate: async (user) => {
+        await timeout(1000);
         user.password = await bcrypt.hash(user.password, 12);
         const geoparseObj = await geoparse(user.address);
         user.address = geoparseObj.address;

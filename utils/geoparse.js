@@ -13,6 +13,9 @@ const geoparse = async function (query) {
 
   // make a call to the API and parse into a js object
   const locationJSON = await fetch(URL);
+  if (!locationJSON.ok) {
+    console.log(locationJSON);
+  }
   const locationObj = await locationJSON.json();
 
   // store the results
