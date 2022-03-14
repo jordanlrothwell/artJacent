@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
       artwork.get({plain: true})
     );
 
-    res.render("feed", { art, loggedIn: false });
+    res.render("homepage", { art, loggedIn: false });
   } catch (err) {
     res.status(400).json(err);
   }
