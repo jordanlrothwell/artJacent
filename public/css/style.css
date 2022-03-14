@@ -77,13 +77,8 @@ h3 {
   background-color: white;
 }
 
-aside {
-    margin-right: 20px;
-    padding: 20px;
-    float: right;
-    width: 20%;
-    }
-
-#profile-picture {
-    position: relative;
+.image-upload-form {
+  display: block;
+  position: relative;
 }
+

@@ -1,10 +1,31 @@
-  <main>
-    <h2>Name: {{name}}</h2>
-    <h4>Username: {{username}}</h4>
-    <h4>Email: {{email}}</h4>
-    <h4>Address: {{address}}</h4>
-    <form action="/" enctype="multipart/form-data" method="post">
+{{!-- Profile button to be moved into header bar --}}
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Profile</button>
+
+{{!-- Expandable side panel --}}
+<main class="profile-body">
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h4 id="offcanvasRightLabel">{{name}}</h4>
+    </div>
+    <div class="offcanvas-body">
+      <p>{{username}}</p>
+      <p>{{email}}</p>
+      <p>{{address}}</p>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+  </div>
+  <div class="card m-4">
+    <h5 class="card-header">Upload image</h5>
+    <div class="card-body">
+      <p class="card-text">Upload new artwork for others to see</p>
+      <form class="image-upload-form" action="/" enctype="multipart/form-data" method="post">
         <input type="file" name="image" accept='image/*' >
-        <input type="submit" value="Upload">
-    </form>  
-  </main>
+        <input class="btn btn-primary"type="submit" value="Upload">
+      </form>
+    </div>
+  </div>
+  {{!-- Section to come where users own artwork is displayed --}}
+  {{!-- <div class="m-4">
+    <h4>Feed</h4>
+  </div> --}}
+</main>
