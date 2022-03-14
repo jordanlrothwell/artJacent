@@ -24,3 +24,10 @@ text-decoration: underline;
 .btn:focus {
     background-color: red;
   }
+
+aside {
+    margin-right: 20px;
+    padding: 20px;
+    float: right;
+    width: 20%;
+    }
