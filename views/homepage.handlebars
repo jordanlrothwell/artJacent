@@ -1,41 +1,46 @@
 <!-- TODO: Loop over each Project and output the name, funding needed, User name, created date and description -->
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      {{{get_emoji}}}
-      <a href="/project/1">Hardcoded Project 1</a>
-    </h2>
-    <p>
-      <span for="img" aria-label="money">💲</span>
-      <!-- TODO: Pass needed_funding value to the appropriate helper function to format large numbers -->
-      <span class="dollar-amount">5,000</span>
-      needed!
-    </p>
-    <p>Created by Hardcoded User on 01/01/2022</p>
+<main id="body" class="container">
+  <h2>Welcome to artJacent</h2>
+  <h3>Please Login or Signup </h3>
+  <div class="container">
+    <a style="color: white; text-decoration: none;" href="/login">Login</a>
+    <button class="no-button" id="login"></button>
   </div>
-  <div class="col-md-7">
-    <p>
-      A hardcoded project description that you should replace with something dynamic
-    </p>
+
+  <form class="form login-form">
+    <div class="form-group">
+      <label for="email-login">Email:</label>
+      <input class="form-input" type="text" id="email-login" />
+    </div>
+    <div class="form-group">
+      <label for="password-login">Password:</label>
+      <input class="form-input" type="password" id="password-login" />
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">Login</button>
+    </div>
+  </form>
+
+  <div class="container">
+    <a style="color: white; text-decoration: none;" href="/profile">Signup</a> 
+    <button class="no-button" color="#065b83" id="signup"></button>
   </div>
-</div>
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      {{{get_emoji}}}
-      <a href="/project/2">Hardcoded Project 2</a>
-    </h2>
-    <p>
-      <span for="img" aria-label="money">💲</span>
-      <!-- TODO: Pass needed_funding value to the appropriate helper function to format large numbers -->
-      <span class="dollar-amount">5,000</span>
-      needed!
-    </p>
-    <p>Created by Hardcoded User on 01/01/2022</p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      A hardcoded project description that you should replace with something dynamic
-    </p>
-  </div>
-</div>
+
+  <form class="form signup-form">
+    <div class="form-group">
+      <label for="name-signup">Name:</label>
+      <input class="form-input" type="text" id="name-signup" />
+    </div>
+    <div class="form-group">
+      <label for="email-signup">email:</label>
+      <input class="form-input" type="text" id="email-signup" />
+    </div>
+    <div class="form-group">
+      <label for="password-signup">password:</label>
+      <input class="form-input" type="password" id="password-signup" />
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">signup</button>
+    </div>
+  </form>
+</main>
