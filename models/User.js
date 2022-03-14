@@ -2,6 +2,7 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
 const { geoparse } = require("../utils");
+const randomSuburb = require("../seeds/ausLocations/randomSuburb");
 
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -37,7 +38,7 @@ User.init(
     },
     address: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     latitude: {
       type: DataTypes.DOUBLE,
@@ -58,6 +59,7 @@ User.init(
       beforeCreate: async (user) => {
         await timeout(1000);
         user.password = await bcrypt.hash(user.password, 12);
+        user.address = randomSuburb();
         const geoparseObj = await geoparse(user.address);
         user.address = geoparseObj.address;
         user.latitude = geoparseObj.coordinates.lat;
