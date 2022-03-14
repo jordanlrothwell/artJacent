@@ -27,10 +27,6 @@ header,
   text-decoration: none;
 }
 
-.btn:focus {
-  background-color: red;
-}
-
 h1 {
   font-size: 100px;
   color: white;
@@ -75,6 +71,10 @@ h3 {
   flex-direction: column;
   justify-content: center;
 
+}
+
+.profile-body {
+  background-color: white;
 }
 
 aside {
