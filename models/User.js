@@ -26,7 +26,7 @@ User.init(
     },
     username: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -38,6 +38,7 @@ User.init(
     },
     address: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     latitude: {
       type: DataTypes.DOUBLE,
