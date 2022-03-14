@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Artwork } = require("../../models");
 
 // CREATE new user
 router.post("/", async (req, res) => {
@@ -53,6 +53,14 @@ router.post("/login", async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.post("/upload", async (req, res) => {
+  const artworkData = await Artwork.create({
+    name: req.body.name,
+    image: req.body.image,
+    user_id: req.session.user_id,
+  });
 });
 
 // Logout
