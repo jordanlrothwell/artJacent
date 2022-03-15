@@ -53,6 +53,22 @@ router.post("/login", async (req, res) => {
   }
 });
 
+
+// Send the artwork data to the client
+router.get("/artwork", async (req, res) => {
+  try {
+    await Artwork.findAll({
+      include: [
+        {
+          model: User,
+        },
+      ]
+    }).then((artData) => res.status(200).json(artData));
+  } catch (err) {
+    res.status(400).json(err);
+  }
+})
+
 router.post("/upload", async (req, res) => {
   const artworkData = await Artwork.create({
     name: req.body.name,
