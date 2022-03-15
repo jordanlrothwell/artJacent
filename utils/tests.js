@@ -11,6 +11,7 @@ const getData = async () => {
             if (response.ok) {
                 console.log(response.json());
 
+
                 // New array to push the posts with new distance attributes
                 const newPostsArray = [];
 
@@ -38,6 +39,7 @@ const getData = async () => {
                     // Add the new post object to the array
                     newPostsArray.push(post);
                 }
+
             }
             else {
                 console.log("something went wrong");

@@ -31,3 +31,5 @@ const mergeSort = (arr) => {
 // Set up a test case for the algorithm
 const test = [1,9,7,3,2,5,8,11,16,4];
 console.log(mergeSort(test));
+
+module.exports = mergeSort;
