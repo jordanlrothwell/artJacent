@@ -67,6 +67,9 @@ router.get("/", async (req, res) => {
         }
 
 
+    res.render("feed", { art, loggedIn: false });
+
+
           const merge = (left, right) => {
             let sortedArr = []; // the sorted elements will go here
         
@@ -106,7 +109,7 @@ router.get("/", async (req, res) => {
       }
     });
 
-    res.render("homepage", {orderedArt, loggedIn: false });
+    res.render("homepage", {orderedArt, loggedIn: false })
   } catch (err) {
     res.status(400).json(err);
   }
