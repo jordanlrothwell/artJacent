@@ -4,19 +4,18 @@ const { Artwork, User } = require("../models");
 
 // Send all items in the artwork table to /
 router.get("/", async (req, res) => {
-  let orderedArt;
   try {
     const dbArtData = await Artwork.findAll({
       include: [
         {
           model: User,
-          attributes: ["name"],
         },
       ],
     });
 
     const art = dbArtData.map((artwork) => artwork.get({ plain: true }));
 
+    res.render("feed", {art, loggedIn: false });
     router.get("/", async (req, res) => {
       const user_id = req.session.user_id;
       try {
@@ -110,6 +109,7 @@ router.get("/", async (req, res) => {
     });
 
     res.render("homepage", {orderedArt, loggedIn: false })
+
   } catch (err) {
     res.status(400).json(err);
   }
