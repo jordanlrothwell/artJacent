@@ -16,7 +16,7 @@ Artwork.init(
       allowNull: false,
     },
     image: {
-      type: DataTypes.BLOB("long"),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     user_id: {
