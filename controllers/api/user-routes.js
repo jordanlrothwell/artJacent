@@ -70,16 +70,28 @@ router.get("/artwork", async (req, res) => {
   }
 })
 
-router.post("/upload", async (req, res) => {
-   try {
-    await Artwork.create({
-      name: req.body.name,
-      image: req.files.file.data.toString("base64"),
-      user_id: 1,
-    })
-    res.status(200).json({"Message": "Succesfully added image to the database!"});
-   } catch (err) {
-      res.status(400).json(err);
+
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: (req, res, cb) => {
+    cb(null, "./userImages");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({storage: storage});
+
+
+router.post("/upload", upload.single("image"), async (req, res) => {
+  try {
+    console.log(req.body);
+    console.log(req.file);
+    res.status(200).json({"message": "Success"});
+  } catch (err) {
+    console.log(err);
   }
 });
 
