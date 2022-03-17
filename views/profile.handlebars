@@ -1,8 +1,12 @@
 {{!-- Profile button to be moved into header bar --}}
-<button class="btn btn-primary float-righ r-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Profile</button>
+<div>
+  <button class="btn btn-primary position-relative float-right mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Profile details</button>
+</div>
 
-{{!-- Expandable side panel --}}
+
 <main class="profile-body">
+
+  {{!-- Drawer with profile details --}}
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
       <h4 id="offcanvasRightLabel">{{name}}</h4>
@@ -13,21 +17,36 @@
       <p>{{address}}</p>
     </div>
   </div>
+
+  {{!-- Upload artwork --}}
   <div class="card">
     <h5 class="card-header">Upload image</h5>
     <div class="card-body">
       <p class="card-text">Upload new artwork for others to see</p>
+
       <form class="image-upload-form" enctype="multipart/form-data" id="form" method="POST" action="/api/user/upload">
         <input type="file" name="image"id="image">
         <input class="btn btn-primary"type="submit" id="submit">
+
       </form>
     </div>
-  </div>
-  {{!-- Section to come where users own artwork is displayed --}}
-  {{!-- <div class="m-4">
-    <h4>Feed</h4>
-  </div> --}}
-</main>
+  </div >
 
+{{!-- Display photos --}}
+  <div class="container">
+    <div class="">
+        <div class="card-group mt-4 row">
+          {{#each art as |artwork|}}
+            <div class="mb-5 card-container col-sm-12 col-md-6 col-xl-3">
+              <img class="artwork-image card mh-100 w-100" src="{{image}}" alt="{{name}}">
+              <div class="card-body">
+                <h5 class="card-title">{{name}}</h5> 
+              </div>
+            </div>
+          {{/each}}
+        </div>
+    </div>
+  </div>
+</main>
 <script src="./js/profile.js"></script>
 {{!-- <script src="./js/upload.js"></script> --}}
