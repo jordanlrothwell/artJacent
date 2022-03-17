@@ -19,15 +19,16 @@
       <p class="card-text">Upload new artwork for others to see</p>
       <form class="image-upload-form" enctype="multipart/form-data" id="form">
         <input type="text" name="name" placeholder="name" id="name">
-        <input type="file" name="image" placeholder="image" id="image">
+        <input type="text" name="image" placeholder="image" id="image">
         <input class="btn btn-primary"type="submit" id="submit">
       </form>
     </div>
   </div>
   {{!-- Section to come where users own artwork is displayed --}}
-  {{!-- <div class="m-4">
-    <h4>Feed</h4>
-  </div> --}}
+  {{#each art as |artwork|}}
+  <h2>{{name}}</h2>
+  <img src="{{image}}" alt="{{name}}">
+  {{/each}}
 </main>
 
 <script src="./js/profile.js"></script>
