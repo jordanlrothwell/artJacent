@@ -27,38 +27,20 @@
       </form>
     </div>
   </div >
-  <div class="mt-4">
-    <h4>Your posts</h4>
-    <div class="card-group">
-  <div class="card m-1">
-    <img class="card-img-top h-100" src="./images/artwork1.png" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Coming soon</h5>
-    </div>
-  </div>
-  <div class="card m-1">
-    <img class="card-img-top h-100" src="./images/artwork2.png" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Coming soon</h5>
-    </div>
-  </div>
-  <div class="card m-1">
-    <img class="card-img-top h-100" src="./images/artwork3.png" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Coming soon</h5>
-    </div>
-  </div>
+
+<div class="container">
+  <div class="">
+      <div class="card-group mt-4 row">
+        {{#each art as |artwork|}}
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <img class="card mh-100 w-100" src="{{image}}" alt="{{name}}">
+            <div class="card-body">
+              <h5 class="card-title">{{name}}</h5> 
+            </div>
+          </div>
+        {{/each}}
+      </div>
   </div>
 </div>
-  </div>
-  </div>
-
-  {{!-- Section to come where users own artwork is displayed --}}
-  {{#each art as |artwork|}}
-  <h2>{{name}}</h2>
-  <img src="{{image}}" alt="{{name}}">
-  {{/each}}
-</main>
-
 <script src="./js/profile.js"></script>
 <script src="./js/upload.js"></script>
