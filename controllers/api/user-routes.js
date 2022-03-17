@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const session = require("express-session");
 const { User, Artwork } = require("../../models");
 
 // CREATE new user
@@ -47,13 +48,14 @@ router.post("/login", async (req, res) => {
 
     req.session.loggedIn = true;
 
-    res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
+    res
+      .status(200)
+      .json({ user: dbUserData, message: "You are now logged in!" });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
 
 // Send the artwork data to the client
 router.get("/artwork", async (req, res) => {
@@ -63,23 +65,25 @@ router.get("/artwork", async (req, res) => {
         {
           model: User,
         },
-      ]
+      ],
     }).then((artData) => res.status(200).json(artData));
   } catch (err) {
     res.status(400).json(err);
   }
-})
+});
 
 router.post("/upload", async (req, res) => {
-   try {
+  try {
     await Artwork.create({
       name: req.body.name,
-      image: req.files.file.data.toString("base64"),
-      user_id: 1,
-    })
-    res.status(200).json({"Message": "Succesfully added image to the database!"});
-   } catch (err) {
-      res.status(400).json(err);
+      image: req.body.image,
+      user_id: req.session.user_id
+    });
+    res
+      .status(200)
+      .json({ Message: "Succesfully added image to the database!" });
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 

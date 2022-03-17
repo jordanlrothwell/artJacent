@@ -4,11 +4,11 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const name = document.getElementById("name").value;
-    const file = document.getElementById("image");
+    const image = document.getElementById("image").value;
 
     let formData = new FormData();
     formData.append("name", name);
-    formData.append('file', file.files[0]);
+    formData.append("image", image)
 
     sendFile(formData);
 })
