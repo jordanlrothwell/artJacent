@@ -1,5 +1,8 @@
 {{!-- Profile button to be moved into header bar --}}
-<button class="btn btn-primary float-righ r-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Profile</button>
+<div>
+  <button class="btn btn-primary position-relative float-right mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Profile details</button>
+</div>
+
 
 {{!-- Expandable side panel --}}
 <main class="profile-body">
@@ -23,11 +26,32 @@
         <input class="btn btn-primary"type="submit" id="submit">
       </form>
     </div>
+  </div >
+  <div class="mt-4">
+    <h4>Your posts</h4>
+    <div class="card-group">
+  <div class="card m-1">
+    <img class="card-img-top h-100" src="./images/artwork1.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Coming soon</h5>
+    </div>
   </div>
-  {{!-- Section to come where users own artwork is displayed --}}
-  {{!-- <div class="m-4">
-    <h4>Feed</h4>
-  </div> --}}
+  <div class="card m-1">
+    <img class="card-img-top h-100" src="./images/artwork2.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Coming soon</h5>
+    </div>
+  </div>
+  <div class="card m-1">
+    <img class="card-img-top h-100" src="./images/artwork3.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Coming soon</h5>
+    </div>
+  </div>
+  </div>
+</div>
+  </div>
+  </div>
 </main>
 
 <script src="./js/profile.js"></script>
