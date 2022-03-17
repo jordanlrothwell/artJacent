@@ -1,14 +1,9 @@
-:root {
-  background-color: #87ceeb;
-}
-
 * {
   font-family: Poppins;
 }
 
 header,
 .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
   background-color: #00adf2;
 }
 
@@ -22,23 +17,12 @@ header,
   font-size: 100%;
 }
 
-.no-button:hover {
-  color: #065b83;
-  text-decoration: none;
-}
-
 h1 {
   font-size: 100px;
   color: white;
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: relative;
-  top: 25px;
-}
-
-span {
-  color: #009aee;
+  padding-top: 15px;
 }
 
 h2 {
@@ -71,7 +55,6 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
 .profile-body {
@@ -80,20 +63,10 @@ h3 {
 
 .image-upload-form {
   display: block;
-  position: relative;
 }
 
-h1 {
-  font-size: 100px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: 25px;
-}
 span {
-  color: #009aee;
+  color:black;
 }
 
 h2 {

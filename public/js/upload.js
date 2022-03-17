@@ -2,7 +2,7 @@ const form = document.getElementById("form");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-
+  
     // const name = document.getElementById("name").value;
     const file = document.getElementById("image");
 
@@ -10,6 +10,7 @@ form.addEventListener("submit", (e) => {
     // formData.append("name", name);
     formData.append('file', file.files[0]);
 
+  
     sendFile(formData);
 })
 

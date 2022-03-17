@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const session = require("express-session");
 const { User, Artwork } = require("../../models");
 const path = require("path");
 
@@ -48,13 +49,14 @@ router.post("/login", async (req, res) => {
 
     req.session.loggedIn = true;
 
-    res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
+    res
+      .status(200)
+      .json({ user: dbUserData, message: "You are now logged in!" });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
 
 // Send the artwork data to the client
 router.get("/artwork", async (req, res) => {
@@ -64,13 +66,12 @@ router.get("/artwork", async (req, res) => {
         {
           model: User,
         },
-      ]
+      ],
     }).then((artData) => res.status(200).json(artData));
   } catch (err) {
     res.status(400).json(err);
   }
-})
-
+});
 
 const multer = require("multer");
 
@@ -99,6 +100,8 @@ router.post("/upload", upload.single("image"), async (req, res) => {
   //  } catch (err) {
   //     res.status(400).json(err);
   // }
+
+
 });
 
 // Logout
