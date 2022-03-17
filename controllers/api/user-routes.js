@@ -102,6 +102,29 @@ router.post("/upload", upload.single("image"), async (req, res) => {
   // }
 
 
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: (req, res, cb) => {
+    cb(null, "./userImages");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({storage: storage});
+
+
+router.post("/upload", upload.single("image"), async (req, res) => {
+  try {
+    console.log(req.body);
+    console.log(req.file);
+    res.status(200).json({"message": "Success"});
+  } catch (err) {
+    console.log(err);
+  }
+
 });
 
 // Logout
