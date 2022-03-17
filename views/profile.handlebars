@@ -4,8 +4,9 @@
 </div>
 
 
-{{!-- Expandable side panel --}}
 <main class="profile-body">
+
+  {{!-- Drawer with profile details --}}
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
       <h4 id="offcanvasRightLabel">{{name}}</h4>
@@ -16,6 +17,8 @@
       <p>{{address}}</p>
     </div>
   </div>
+
+  {{!-- Upload artwork --}}
   <div class="card">
     <h5 class="card-header">Upload image</h5>
     <div class="card-body">
@@ -28,19 +31,21 @@
     </div>
   </div >
 
-<div class="container">
-  <div class="">
-      <div class="card-group mt-4 row">
-        {{#each art as |artwork|}}
-          <div class="col-sm-12 col-md-6 col-xl-3">
-            <img class="card mh-100 w-100" src="{{image}}" alt="{{name}}">
-            <div class="card-body">
-              <h5 class="card-title">{{name}}</h5> 
+{{!-- Display photos --}}
+  <div class="container">
+    <div class="">
+        <div class="card-group mt-4 row">
+          {{#each art as |artwork|}}
+            <div class="mb-5 card-container col-sm-12 col-md-6 col-xl-3">
+              <img class="artwork-image card mh-100 w-100" src="{{image}}" alt="{{name}}">
+              <div class="card-body">
+                <h5 class="card-title">{{name}}</h5> 
+              </div>
             </div>
-          </div>
-        {{/each}}
-      </div>
+          {{/each}}
+        </div>
+    </div>
   </div>
-</div>
+</main>
 <script src="./js/profile.js"></script>
 <script src="./js/upload.js"></script>

@@ -1,16 +1,14 @@
 <div class="container">
   <div class="">
       <div class="card-group mt-4 row">
-        {{#each art as |artwork|}}
-          <div class="col-sm-12 col-md-6 col-xl-3">
-            <img class="card mh-100 w-100" src="{{image}}" alt="{{name}}">
-            <div class="card-body inline-flex">
-              <h5 class="card-title">{{name}}</h5> 
-              {{!-- Like button to be added later --}}
-              {{!-- <a class="btn btn-primary" href="#" role="button">Like</a> --}}
+          {{#each art as |artwork|}}
+            <div class="mb-5 card-container col-sm-12 col-md-6 col-xl-3">
+              <img class="artwork-image card mh-100 w-100" src="{{image}}" alt="{{name}}">
+              <div class="card-body">
+                <h5 class="card-title">{{name}}</h5> 
+              </div>
             </div>
-          </div>
-        {{/each}}
+          {{/each}}
       </div>
   </div>
 </div>
