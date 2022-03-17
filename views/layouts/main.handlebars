@@ -12,7 +12,7 @@
 
 <body>
   <div id="header" class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+    <header class="display-flex justify-space-between align-center">
       <h1><span class="art">art</span>Jacent <img src="../images/icons8-paint-50.png"/></h1>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,20 +24,24 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/profile">Profile</a>
                 </li>
+                <li class="nav-item">
+                  <button class="nav-link" id="logout">Log out</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" id="/">Feed</button>
+                </li>
               {{else}}
                 <li class="nav-item active">
                   <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link" id="logout">Log out</button>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/profile">Profile</a>
+                  <button class="nav-link" id="/">Feed</button>
                 </li>
               {{/if}}
             </ul>
           </div>
         </nav>
+
     </header>
     <main id="body" class="container container-fluid mt-5">
       {{{ body }}}

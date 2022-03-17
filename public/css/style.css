@@ -7,16 +7,6 @@ header,
   background-color: #00adf2;
 }
 
-.no-button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: black;
-  text-decoration: none;
-  font-size: 100%;
-}
-
 h1 {
   font-size: 100px;
   color: white;
@@ -42,23 +32,10 @@ h3 {
   align-items: center;
 }
 
-.btn-primary {
-  background-color: #00adf2;
-  color: white;
-  border-style: solid;
-  border-color: white;
-  border-radius: 5px 5px 5px 5px;
-  align-items: center;
-}
-
 .container{
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.profile-body {
-  background-color: white;
 }
 
 .image-upload-form {
@@ -69,35 +46,11 @@ span {
   color:black;
 }
 
-h2 {
-  font-size: 30px;
-  color: white;
-  font-weight: bolder;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.card-container {
+  max-height: 250px;
+  max-width: 250px;
 }
 
-h3 {
-  font-size: 20px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-primary {
-  background-color: #00adf2;
-  color: white;
-  border-style: solid;
-  border-color: white;
-  border-radius: 5px 5px 5px 5px;
-  align-items: center;
-}
-
-.container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
+.artwork-image {
+  object-fit: cover;
 }
