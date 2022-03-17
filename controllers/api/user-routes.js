@@ -70,11 +70,16 @@ router.get("/artwork", async (req, res) => {
 })
 
 router.post("/upload", async (req, res) => {
-  const artworkData = await Artwork.create({
-    name: req.body.name,
-    image: req.body.image,
-    user_id: req.session.user_id,
-  });
+   try {
+    await Artwork.create({
+      name: req.body.name,
+      image: req.files.file.data.toString("base64"),
+      user_id: 1,
+    })
+    res.status(200).json({"Message": "Succesfully added image to the database!"});
+   } catch (err) {
+      res.status(400).json(err);
+  }
 });
 
 // Logout
