@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Artwork } = require("../../models");
+const path = require("path");
 
 // CREATE new user
 router.post("/", async (req, res) => {
@@ -70,17 +71,34 @@ router.get("/artwork", async (req, res) => {
   }
 })
 
-router.post("/upload", async (req, res) => {
-   try {
-    await Artwork.create({
-      name: req.body.name,
-      image: req.files.file.data.toString("base64"),
-      user_id: 1,
-    })
-    res.status(200).json({"Message": "Succesfully added image to the database!"});
-   } catch (err) {
-      res.status(400).json(err);
-  }
+
+const multer = require("multer");
+
+// const storage = multer.diskStorage({
+//   destination: (req, res, cb) => {
+//     db(null, "Images");
+//   },
+//   filename: (req, file, cb) => {
+//     console.log(file);
+//     cb(null, path.extname(file.originalname) + Date.now());
+//   }
+// });
+
+const upload = multer({dest: ""});
+
+router.post("/upload", upload.single("image"), async (req, res) => {
+  //  try {
+  //   // await Artwork.create({
+  //   //   name: req.body.name,
+  //   //   image: req.,
+  //   //   user_id: 1,
+  //   // })
+    console.log(req.body);
+    console.log(req.files);
+    res.status(200).json({"Message": `Succesfully added file to the database`});
+  //  } catch (err) {
+  //     res.status(400).json(err);
+  // }
 });
 
 // Logout
