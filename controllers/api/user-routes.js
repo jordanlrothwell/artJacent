@@ -49,9 +49,7 @@ router.post("/login", async (req, res) => {
 
     req.session.loggedIn = true;
 
-    res
-      .status(200)
-      .json({ user: dbUserData, message: "You are now logged in!" });
+    res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -73,7 +71,6 @@ router.get("/artwork", async (req, res) => {
   }
 });
 
-const multer = require("multer");
 
 // const storage = multer.diskStorage({
 //   destination: (req, res, cb) => {
@@ -85,21 +82,22 @@ const multer = require("multer");
 //   }
 // });
 
-const upload = multer({dest: ""});
+// const upload = multer({dest: ""});
 
-router.post("/upload", upload.single("image"), async (req, res) => {
-  //  try {
-  //   // await Artwork.create({
-  //   //   name: req.body.name,
-  //   //   image: req.,
-  //   //   user_id: 1,
-  //   // })
-    console.log(req.body);
-    console.log(req.files);
-    res.status(200).json({"Message": `Succesfully added file to the database`});
-  //  } catch (err) {
-  //     res.status(400).json(err);
-  // }
+// router.post("/upload", upload.single("image"), async (req, res) => {
+//   //  try {
+//   //   // await Artwork.create({
+//   //   //   name: req.body.name,
+//   //   //   image: req.,
+//   //   //   user_id: 1,
+//   //   // })
+//     console.log(req.body);
+//     console.log(req.files);
+//     res.status(200).json({"Message": `Succesfully added file to the database`});
+//   //  } catch (err) {
+//   //     res.status(400).json(err);
+//   // }
+// });
 
 
 const multer = require('multer');
@@ -124,7 +122,6 @@ router.post("/upload", upload.single("image"), async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-
 });
 
 // Logout
