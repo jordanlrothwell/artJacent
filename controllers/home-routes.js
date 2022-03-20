@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const fs = require("fs");
+const path = require("path");
 const session = require("express-session");
 const { Artwork, User } = require("../models");
 
@@ -14,9 +16,26 @@ router.get("/", async (req, res) => {
     });
 
     const art = dbArtData.map((artwork) => artwork.get({ plain: true }));
+    console.log(art);
 
-    res.render("feed", {art, loggedIn: false });
+    // console.log(__dirname)
 
+    // const dir = path.join(__dirname, "../", "UserImages");
+    // // console.log(dir);
+    // const files = fs.readdirSync(dir);
+    // console.log(files);
+
+    // const imagesArray = [];
+    // for (const file of files) {
+    //   imagesArray.push({
+    //     name: file,
+    //     image: path.join("../", "UserImages", file)
+    //   })
+    // }
+
+    // console.log(imagesArray);
+
+    res.render("feed", { art, loggedIn: false });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -35,6 +54,8 @@ router.get("/profile", async (req, res) => {
 
     const art = dbArtData.map((artwork) => artwork.get({ plain: true }));
 
+    console.log(art);
+
     res.render("profile", { art, loggedIn: false });
   } catch (err) {
     res.status(400).json(err);
@@ -43,10 +64,10 @@ router.get("/profile", async (req, res) => {
 
 // Send the user to the hame page when logged in
 router.get("/login", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
-  }
+  // if (!req.session.loggedIn) {
+  //   res.redirect("/");
+  //   return;
+  // }
   res.render("login");
 });
 
