@@ -2,7 +2,6 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
 const { geoparse } = require("../utils");
-const randomSuburb = require("../seeds/ausLocations/randomSuburb");
 
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
