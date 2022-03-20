@@ -20,22 +20,22 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              {{#if logged_in}}
+              {{#if loggedIn}}
                 <li class="nav-item">
-                  <a class="nav-link" href="/profile">Profile</a>
+                  <a class="nav-link p-2" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link" id="logout">Log out</button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" href="/">Feed</button>
+                  <a class="nav-link p-2" href="/">Feed</a>
                 </li>
               {{else}}
                 <li class="nav-item">
-                  <a class="nav-link" href="/login">Login</a>
+                  <a class="nav-link p-2" href="/">Feed</a>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link" href="/">Feed</button>
+                  <a class="nav-link p-2" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link p-2" id="logout">Log out</a>
                 </li>
               {{/if}}
             </ul>
@@ -52,9 +52,7 @@
     </footer>
   </div>
 
-  {{!-- {{#if logged_in}} --}}
-  <script src="/js/logout.js"></script>
-  {{!-- {{/if}} --}}
+  <script src="../js/logout.js"></script>
 
 </body>
 </html>
