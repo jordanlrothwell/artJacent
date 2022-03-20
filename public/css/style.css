@@ -57,6 +57,7 @@ span {
 
 .artwork-image {
   object-fit: cover;
+  overflow: hidden;
 }
 
 button {
