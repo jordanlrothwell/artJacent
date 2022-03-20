@@ -8,11 +8,12 @@ router.post("/", async (req, res) => {
   try {
     const dbUserData = await User.create({
       name: req.body.name,
-      // username: req.body.username,
+      username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     });
 
+    req.session.user_id = dbUserData.id;
     req.session.loggedIn = true;
 
     res.status(200).json(dbUserData);
@@ -47,9 +48,12 @@ router.post("/login", async (req, res) => {
       return;
     }
 
+    req.session.user_id = dbUserData.id;
     req.session.loggedIn = true;
 
-    res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
+    res
+      .status(200)
+      .json({ user: dbUserData, message: "You are now logged in!" });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -71,36 +75,7 @@ router.get("/artwork", async (req, res) => {
   }
 });
 
-
-// const storage = multer.diskStorage({
-//   destination: (req, res, cb) => {
-//     db(null, "Images");
-//   },
-//   filename: (req, file, cb) => {
-//     console.log(file);
-//     cb(null, path.extname(file.originalname) + Date.now());
-//   }
-// });
-
-// const upload = multer({dest: ""});
-
-// router.post("/upload", upload.single("image"), async (req, res) => {
-//   //  try {
-//   //   // await Artwork.create({
-//   //   //   name: req.body.name,
-//   //   //   image: req.,
-//   //   //   user_id: 1,
-//   //   // })
-//     console.log(req.body);
-//     console.log(req.files);
-//     res.status(200).json({"Message": `Succesfully added file to the database`});
-//   //  } catch (err) {
-//   //     res.status(400).json(err);
-//   // }
-// });
-
-
-const multer = require('multer');
+const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: (req, res, cb) => {
@@ -108,11 +83,10 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
-  }
+  },
 });
 
-const upload = multer({storage: storage});
-
+const upload = multer({ storage: storage });
 
 router.post("/upload", upload.single("image"), async (req, res) => {
   try {
@@ -121,10 +95,11 @@ router.post("/upload", upload.single("image"), async (req, res) => {
     Artwork.create({
       name: req.file.originalname,
       image: path.join("/images", req.file.originalname),
-    })
-    res.status(200).json({"message": "Success"});
+      user_id: req.session.user_id,
+    });
+    res.status(200).json({ message: "Success" });
   } catch (err) {
-    console.log(err);
+    res.status(500).json(err);
   }
 });
 
