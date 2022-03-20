@@ -9,6 +9,7 @@ router.post("/", async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      address: req.body.address,
     });
 
     req.session.user_id = dbUserData.id;

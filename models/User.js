@@ -55,7 +55,6 @@ User.init(
       beforeCreate: async (user) => {
         await timeout(1000);
         user.password = await bcrypt.hash(user.password, 12);
-        user.address = randomSuburb();
         const geoparseObj = await geoparse(user.address);
         user.address = geoparseObj.address;
         user.latitude = geoparseObj.coordinates.lat;
