@@ -1,29 +1,26 @@
 const router = require("express").Router();
-const session = require("express-session");
 const { User, Artwork } = require("../../models");
 const path = require("path");
 
-// CREATE new user
+// signup - creates a new user
 router.post("/", async (req, res) => {
   try {
     const dbUserData = await User.create({
       name: req.body.name,
-      username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     });
 
     req.session.user_id = dbUserData.id;
-    req.session.loggedIn = true;
+    req.session.logged_in = true;
 
     res.status(200).json(dbUserData);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
-// Login
+// login - checks for an existing user and logs in
 router.post("/login", async (req, res) => {
   try {
     const dbUserData = await User.findOne({
@@ -49,7 +46,7 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.user_id = dbUserData.id;
-    req.session.loggedIn = true;
+    req.session.logged_in = true;
 
     res
       .status(200)
@@ -105,16 +102,13 @@ router.post("/upload", upload.single("image"), async (req, res) => {
 
 // Logout
 router.post("/logout", (req, res) => {
-  try {
-    if (req.session.loggedIn) {
-      req.session.destroy(() => {
-        res.status(204).end();
-      });
-    } else {
-      res.status(404).end();
-    }
-  } catch (err) {
-    res.status(500).json(err);
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+    res.redirect("/feed");
+  } else {
+    res.status(404).end();
   }
 });
 
