@@ -54,3 +54,8 @@ span {
 .artwork-image {
   object-fit: cover;
 }
+
+button {
+  border: none;
+  background: none;
+}
