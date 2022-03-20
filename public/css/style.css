@@ -50,16 +50,6 @@ span {
   color:black;
 }
 
-.card-container {
-  max-height: 250px;
-  max-width: 250px;
-}
-
-.artwork-image {
-  object-fit: cover;
-  overflow: hidden;
-}
-
 button {
   border: none;
   background: none;
