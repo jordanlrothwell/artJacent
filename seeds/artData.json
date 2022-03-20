@@ -1,14 +1,62 @@
 [
     {
         "name": "post 1",
-        "image": "/images/artwork1.png"
+        "image": "/images/artwork1.png",
+        "user_id": 1
     },
     {
         "name": "post 2",
-        "image": "/images/artwork2.png"
+        "image": "/images/artwork2.png",
+        "user_id": 2
     },
     {
         "name": "post 3",
-        "image": "/images/artwork3.png"
+        "image": "/images/artwork3.png",
+        "user_id": 3
+    },
+    {
+        "name": "post 4",
+        "image": "/images/artwork4.png",
+        "user_id": 4
+    },
+    {
+        "name": "post 5",
+        "image": "/images/artwork5.png",
+        "user_id": 5
+    },
+    {
+        "name": "post 6",
+        "image": "/images/artwork6.png",
+        "user_id": 6
+    },
+    {
+        "name": "post 7",
+        "image": "/images/artwork7.png",
+        "user_id": 7
+    },
+    {
+        "name": "post 8",
+        "image": "/images/artwork8.png",
+        "user_id": 8
+    },
+    {
+        "name": "post 9",
+        "image": "/images/artwork9.png",
+        "user_id": 9
+    },
+    {
+        "name": "post 10",
+        "image": "/images/artwork10.png",
+        "user_id": 10
+    },
+    {
+        "name": "post 11",
+        "image": "/images/artwork11.png",
+        "user_id": 11
+    },
+    {
+        "name": "post 12",
+        "image": "/images/artwork12.png",
+        "user_id": 12
     }
 ]
