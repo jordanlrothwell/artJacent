@@ -1,5 +1,9 @@
 * {
-  font-family: Poppins;
+  font-family: 'Poppins', sans-serif;
+}
+
+p {
+  font-weight: 200;
 }
 
 header,
