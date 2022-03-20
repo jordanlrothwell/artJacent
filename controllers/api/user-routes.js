@@ -3,18 +3,17 @@ const session = require("express-session");
 const { User, Artwork } = require("../../models");
 const path = require("path");
 
-// CREATE new user
+// signup - creates a new user
 router.post("/", async (req, res) => {
   try {
     const dbUserData = await User.create({
       name: req.body.name,
-      username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     });
 
     req.session.user_id = dbUserData.id;
-    req.session.loggedIn = true;
+    req.session.logged_in = true;
 
     res.status(200).json(dbUserData);
   } catch (err) {
@@ -23,7 +22,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Login
+// login - checks for an existing user and logs in
 router.post("/login", async (req, res) => {
   try {
     const dbUserData = await User.findOne({
@@ -49,7 +48,7 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.user_id = dbUserData.id;
-    req.session.loggedIn = true;
+    req.session.logged_in = true;
 
     res
       .status(200)
