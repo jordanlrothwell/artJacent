@@ -34,7 +34,7 @@ User.init(
     },
     address: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     latitude: {
       type: DataTypes.DOUBLE,
