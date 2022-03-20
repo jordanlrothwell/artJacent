@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const session = require("express-session");
 const { User, Artwork } = require("../../models");
 const path = require("path");
 
@@ -17,7 +16,6 @@ router.post("/", async (req, res) => {
 
     res.status(200).json(dbUserData);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -104,16 +102,13 @@ router.post("/upload", upload.single("image"), async (req, res) => {
 
 // Logout
 router.post("/logout", (req, res) => {
-  try {
-    if (req.session.loggedIn) {
-      req.session.destroy(() => {
-        res.status(204).end();
-      });
-    } else {
-      res.status(404).end();
-    }
-  } catch (err) {
-    res.status(500).json(err);
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+    res.redirect("/feed");
+  } else {
+    res.status(404).end();
   }
 });
 
