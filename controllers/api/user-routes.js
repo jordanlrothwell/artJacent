@@ -104,7 +104,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: (req, res, cb) => {
-    cb(null, "./userImages");
+    cb(null, "./public/images");
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
@@ -118,6 +118,10 @@ router.post("/upload", upload.single("image"), async (req, res) => {
   try {
     console.log(req.body);
     console.log(req.file);
+    Artwork.create({
+      name: req.file.originalname,
+      image: path.join("/images", req.file.originalname),
+    })
     res.status(200).json({"message": "Success"});
   } catch (err) {
     console.log(err);
