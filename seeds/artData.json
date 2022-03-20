@@ -1,14 +1,22 @@
 [
     {
         "name": "post 1",
-        "image": "/images/artwork1.png"
+        "image": "/images/artwork1.png",
+        "user_id": 1
     },
     {
         "name": "post 2",
-        "image": "/images/artwork2.png"
+        "image": "/images/artwork2.png",
+        "user_id": 1
     },
     {
-        "name": "post 3",
-        "image": "/images/artwork3.png"
+        "name": "post 2",
+        "image": "/images/artwork3.png",
+        "user_id": 2
+    },
+    {
+        "name": "post 2",
+        "image": "/images/download.jpg",
+        "user_id": 2
     }
 ]
