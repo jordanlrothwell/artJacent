@@ -22,13 +22,6 @@
             <ul class="navbar-nav">
               {{#if loggedIn}}
                 <li class="nav-item">
-                  <a class="nav-link p-2" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link p-2" href="/">Feed</a>
-                </li>
-              {{else}}
-                <li class="nav-item">
                   <a class="nav-link p-2" href="/">Feed</a>
                 </li>
                 <li class="nav-item">
@@ -36,6 +29,13 @@
                 </li>
                 <li class="nav-item">
                   <button class="nav-link p-2" id="logout">Log out</button>
+                </li>
+              {{else}}
+                <li class="nav-item">
+                  <a class="nav-link p-2" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link p-2" href="/">Feed</a>
                 </li>
               {{/if}}
             </ul>

@@ -15,9 +15,8 @@ router.get("/", async (req, res) => {
     });
 
     const art = dbArtData.map((artwork) => artwork.get({ plain: true }));
-    console.log(art);
 
-    res.render("feed", { art, logged_in: req.session.logged_in });
+    res.render("feed", { art, loggedIn: req.session.loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -30,7 +29,7 @@ router.get("/profile", withAuth, async (req, res) => {
       include: [{ model: Artwork }],
     });
     const user = userData.get({ plain: true });
-    res.render("profile", { ...user, logged_in: req.session.logged_in });
+    res.render("profile", { ...user, loggedIn: req.session.loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -38,7 +37,7 @@ router.get("/profile", withAuth, async (req, res) => {
 
 // Send the user to the hame page when logged in
 router.get("/login", (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect("/");
     return;
   }
