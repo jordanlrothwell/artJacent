@@ -1,14 +1,14 @@
 [
     {
         "name": "post 1",
-        "image": "This is the first post"
+        "image": "/images/artwork1.png"
     },
     {
         "name": "post 2",
-        "image": "This is the second post"
+        "image": "/images/artwork2.png"
     },
     {
         "name": "post 3",
-        "image": "This is the third post"
+        "image": "/images/artwork3.png"
     }
 ]
