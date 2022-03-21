@@ -5,6 +5,7 @@ const { findByPk } = require("../models/User");
 
 // Send all items in the artwork table to /
 router.get("/", async (req, res) => {
+  const orderedPostArray = [];
   try {
     const dbArtData = await Artwork.findAll({
       include: [
@@ -69,24 +70,21 @@ router.get("/", async (req, res) => {
     };
 
     const orderPosts = async (arr, posts) => {
-      const orderedPostArray = [];
-      for (let i = 0; i<= arr.length; i++) {
+      for (let i = 0; i< arr.length; i++) {
         const array = arr[i];
-        const name = array[array.length - 1];
-        console.log(name);
+        const name = array[array.length - 1]
         for (let j = 0; j < posts.length; j++) {
           if (name == posts[j].name) {
             orderedPostArray.push(posts[j]);
-            console.log(orderedPostArray);
           }
         }
       }
-      return orderedPostArray;
     }
 
     customObj();
+    console.log(orderedPostArray);
 
-    res.render("feed", { posts, logged_in: req.session.logged_in });
+    res.render("feed", { orderedPostArray, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
