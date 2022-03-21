@@ -5,29 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>artJacent</title>
+  <link rel="stylesheet" href="../css/custom.min.css">
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <div id="header" class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center">
+    <header class="display-flex justify-space-between align-center bg-primary">
       <h1><span class="art">art</span>Jacent <img src="../images/icons8-paint-50.png"/></h1>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light p-1">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary p-1">
           <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               {{#if loggedIn}}
-                <li class="nav-item">
-                  <a class="nav-link p-2" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link p-2" href="/">Feed</a>
-                </li>
-              {{else}}
                 <li class="nav-item">
                   <a class="nav-link p-2" href="/">Feed</a>
                 </li>
@@ -36,6 +29,13 @@
                 </li>
                 <li class="nav-item">
                   <button class="nav-link p-2" id="logout">Log out</button>
+                </li>
+              {{else}}
+                <li class="nav-item">
+                  <a class="nav-link p-2" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link p-2" href="/">Feed</a>
                 </li>
               {{/if}}
             </ul>

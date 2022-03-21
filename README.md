@@ -51,12 +51,37 @@ Art is a forever growing passionate interest, that plays an important role in th
 - Protect API keys and sensitive information with environment variables.
 
 
-## Images for artJACENT
+**********************************************
+## LINK TO DEPLOY APPLICATION
+
+
+
+**********************************************
+
+## Images for artJACENT:
+
+**Local and Interstate Connection**
+
+
+<img src="https://user-images.githubusercontent.com/94832331/159158066-7ffd80eb-caca-419b-bddb-959cf3d0fac3.png" width="400" height="200"> <img src="https://user-images.githubusercontent.com/94832331/159158556-25020389-0c69-4010-acf9-46f5d0e379b8.png" width="400" height="200">
 
 
 
 
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 
+* The aqua coloured lines represents local connections.
+* The yellow coloured lines represents interstate connections.
+* NOTE: Artwork developers within the same local district would be able to view each others artwork,
+  before other artwork developers from farther locations and interstate. 
+
+
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+
+**artJacent in the making**
+
+<img src="https://user-images.githubusercontent.com/94832331/159162727-ab6aab78-325b-4333-ba8c-8ffb53d9b67c.png" width="300" height="150">  <img src="https://user-images.githubusercontent.com/94832331/159162235-f20c8aee-fdfe-491e-993c-660236ea21aa.png" width="300" height="150">
 
 
 

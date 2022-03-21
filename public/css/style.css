@@ -1,5 +1,9 @@
 * {
-  font-family: Poppins;
+  font-family: 'Poppins', sans-serif;
+}
+
+p {
+  font-weight: 200;
 }
 
 header,
@@ -46,11 +50,7 @@ span {
   color:black;
 }
 
-.card-container {
-  max-height: 250px;
-  max-width: 250px;
-}
-
-.artwork-image {
-  object-fit: cover;
+button {
+  border: none;
+  background: none;
 }

@@ -3,10 +3,9 @@
       <div class="card-group mt-4 row">
           {{#each orderedPostArray as |artwork|}}
             <div class="mb-5 card-container col-sm-12 col-md-6 col-xl-3">
-              <img class="artwork-image card mh-100 w-100" src="{{image}}" alt="{{image}}">
-              <div class="card-body">
-                <h5 class="card-title">{{name}}</h5> 
-              </div>
+              <a href="/artwork/{{artwork.id}}">
+                <img class="artwork-image card mh-100 w-100" src="{{image}}" alt="{{image}}">
+              </a>
             </div>
           {{/each}}
       </div>

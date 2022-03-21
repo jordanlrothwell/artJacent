@@ -28,7 +28,6 @@ router.get("/", async (req, res) => {
 
     // Get all artworks
     const art = dbArtData.map((artwork) => artwork.get({ plain: true }));
-    console.log(art);
 
     // For every artwork, find the distance of the post to the user
     const customObj = async () => {
@@ -85,6 +84,7 @@ router.get("/", async (req, res) => {
     console.log(orderedPostArray);
 
     res.render("feed", { orderedPostArray, logged_in: req.session.logged_in });
+
   } catch (err) {
     res.status(500).json(err);
   }
@@ -97,7 +97,7 @@ router.get("/profile", withAuth, async (req, res) => {
       include: [{ model: Artwork }],
     });
     const user = userData.get({ plain: true });
-    res.render("profile", { ...user, logged_in: req.session.logged_in });
+    res.render("profile", { ...user, loggedIn: req.session.loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -105,11 +105,33 @@ router.get("/profile", withAuth, async (req, res) => {
 
 // Send the user to the hame page when logged in
 router.get("/login", (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect("/");
     return;
   }
   res.render("login");
+});
+
+// take the user to a specific artwork
+router.get("/artwork/:id", async (req, res) => {
+  try {
+    const artworkData = await Artwork.findByPk(req.params.id, {
+      include: [
+        {
+          model: User
+        },
+      ],
+    });
+
+    const artwork = artworkData.get({ plain: true });
+
+    res.render("artwork", {
+      ...artwork,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

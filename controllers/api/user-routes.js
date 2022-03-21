@@ -9,10 +9,11 @@ router.post("/", async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      address: req.body.address,
     });
 
     req.session.user_id = dbUserData.id;
-    req.session.logged_in = true;
+    req.session.loggedIn = true;
 
     res.status(200).json(dbUserData);
   } catch (err) {
@@ -46,7 +47,7 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.user_id = dbUserData.id;
-    req.session.logged_in = true;
+    req.session.loggedIn = true;
 
     res
       .status(200)
@@ -87,14 +88,28 @@ const upload = multer({ storage: storage });
 
 router.post("/upload", upload.single("image"), async (req, res) => {
   try {
-    console.log(req.body);
-    console.log(req.file);
-    Artwork.create({
+    await Artwork.create({
       name: req.file.originalname,
       image: path.join("/images", req.file.originalname),
       user_id: req.session.user_id,
     });
-    res.status(200).json({ message: "Success" });
+    res.redirect("/profile");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// get specific post
+router.get("/:id", async (req, res) => {
+  try {
+    const artworkData = await Artwork.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+        },
+      ],
+    });
+    res.status(200).json(artworkData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -102,11 +117,10 @@ router.post("/upload", upload.single("image"), async (req, res) => {
 
 // Logout
 router.post("/logout", (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });
-    res.redirect("/feed");
   } else {
     res.status(404).end();
   }
