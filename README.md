@@ -54,7 +54,7 @@ Art is a forever growing passionate interest, that plays an important role in th
 **********************************************
 ## LINK TO DEPLOY APPLICATION
 
-
+https://artjacent.herokuapp.com/
 
 **********************************************
 
