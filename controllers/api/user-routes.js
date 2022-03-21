@@ -21,6 +21,18 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.post("/seed", async (req, res) => {
+  try {
+    const newPost = await Post.create({
+      ...req.body,
+    });
+
+    res.status(200).json(newPost);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // login - checks for an existing user and logs in
 router.post("/login", async (req, res) => {
   try {
