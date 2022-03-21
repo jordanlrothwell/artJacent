@@ -44,4 +44,26 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+// take the user to a specific artwork
+router.get("/artwork/:id", async (req, res) => {
+  try {
+    const artworkData = await Artwork.findByPk(req.params.id, {
+      include: [
+        {
+          model: User
+        },
+      ],
+    });
+
+    const artwork = artworkData.get({ plain: true });
+
+    res.render("artwork", {
+      ...artwork,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

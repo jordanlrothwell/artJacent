@@ -99,6 +99,22 @@ router.post("/upload", upload.single("image"), async (req, res) => {
   }
 });
 
+// get specific post
+router.get("/:id", async (req, res) => {
+  try {
+    const artworkData = await Artwork.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+        },
+      ],
+    });
+    res.status(200).json(artworkData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // Logout
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
