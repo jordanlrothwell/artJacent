@@ -46,6 +46,7 @@ router.get("/", async (req, res) => {
             postLatitude,
             postLongitude
           ),
+          id: art[i].id
         };
         postsArray.push(obj);
       }
