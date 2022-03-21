@@ -118,11 +118,12 @@ router.get("/:id", async (req, res) => {
 // Logout
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
+    res.redirect("/");
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(200).end()
     });
   } else {
-    res.status(404).end();
+    res.status(404);
   }
 });
 

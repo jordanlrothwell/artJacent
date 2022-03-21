@@ -5,8 +5,9 @@ const { findByPk } = require("../models/User");
 
 // Send all items in the artwork table to /
 router.get("/", async (req, res) => {
-  const orderedPostArray = [];
   try {
+    if (req.session.loggedIn == true) {
+      const orderedPostArray = [];
     const dbArtData = await Artwork.findAll({
       include: [
         {
@@ -84,7 +85,10 @@ router.get("/", async (req, res) => {
     customObj();
     console.log(orderedPostArray);
 
-    res.render("feed", { orderedPostArray, logged_in: req.session.logged_in });
+    res.render("feed", { orderedPostArray, loggedIn: req.session.loggedIn });
+    } else {
+      res.redirect("/login");
+    }
 
   } catch (err) {
     res.status(500).json(err);
