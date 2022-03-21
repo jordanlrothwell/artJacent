@@ -21,7 +21,19 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/seed", async (req, res) => {
+router.post("/seed-user", async (req, res) => {
+  try {
+    const newUser = await User.create({
+      ...req.body,
+    });
+
+    res.status(200).json(newUser);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.post("/seed-artwork", async (req, res) => {
   try {
     const newArtwork = await Artwork.create({
       ...req.body,
