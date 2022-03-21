@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const { Artwork, User } = require("../models");
-const { withAuth } = require("../utils");
+const { withAuth, distance, mergeSort } = require("../utils");
 const { findByPk } = require("../models/User");
 
 // Send all items in the artwork table to /
 router.get("/", async (req, res) => {
+  const orderedPostArray = [];
   try {
     const dbArtData = await Artwork.findAll({
       include: [
@@ -14,9 +15,76 @@ router.get("/", async (req, res) => {
       ],
     });
 
+    const dbUserData = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+
+    // Get the current user's location
+    const user = dbUserData.get({ plain: true });
+    const userLatitude = user.latitude;
+    const userLongitude = user.longitude;
+
+    // Get all artworks
     const art = dbArtData.map((artwork) => artwork.get({ plain: true }));
 
-    res.render("feed", { art, loggedIn: req.session.loggedIn });
+    // For every artwork, find the distance of the post to the user
+    const customObj = async () => {
+      const postsArray = [];
+      for (let i = 0; i < art.length; i++) {
+        const postLatitude = art[i].user.latitude;
+        const postLongitude = art[i].user.longitude;
+
+        const obj = {
+          name: art[i].name,
+          image: art[i].image,
+          user: art[i].user.name,
+          distance: distance(
+            userLatitude,
+            userLongitude,
+            postLatitude,
+            postLongitude
+          ),
+        };
+        postsArray.push(obj);
+      }
+      await orderedArray(postsArray);
+    };
+
+    const orderedArray = async (arr) => {
+      const mergeDistancesArray = [];
+      for (let i = 0; i < arr.length; i++) {
+        const distance = arr[i].distance;
+        const name = arr[i].name
+        mergeDistancesArray.push([distance, name]);
+      }
+      console.log(mergeDistancesArray);
+      const orderedArray = mergeSort(mergeDistancesArray);
+
+      console.log(orderedArray);
+
+      orderPosts(orderedArray, arr);
+
+    };
+
+    const orderPosts = async (arr, posts) => {
+      for (let i = 0; i< arr.length; i++) {
+        const array = arr[i];
+        const name = array[array.length - 1]
+        for (let j = 0; j < posts.length; j++) {
+          if (name == posts[j].name) {
+            orderedPostArray.push(posts[j]);
+          }
+        }
+      }
+    }
+
+    customObj();
+    console.log(orderedPostArray);
+
+    res.render("feed", { orderedPostArray, logged_in: req.session.logged_in });
+
   } catch (err) {
     res.status(500).json(err);
   }
